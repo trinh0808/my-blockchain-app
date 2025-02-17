@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Logistics</title>
+</head>
+<body>
+    <h1>Ứng dụng Blockchain trong Logistics</h1>
+    <h2>Danh sách Blocks</h2>
+    <ul>
+        {% for block in chain %}
+            <li>Block {{ block.index }} - Hash: {{ block.previous_hash }}</li>
+        {% endfor %}
+    </ul>
+    <button onclick="mineBlock()">Đào Block</button>
+
+    <script>
+        function mineBlock() {
+            fetch('/mine').then(response => response.json()).then(data => {
+                alert("Block mới đã được tạo!");
+                location.reload();
+            });
+        }
+    </script>
+</body>
+</html>
